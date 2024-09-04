@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Custom background gradient */
+        body {
+          background: radial-gradient(circle, #aa3bff, #596fec)
+        }
+    
+        /* Custom background image for the form */
+        .form-background {
+          background-image: url('https://images.unsplash.com/photo-1542744173-d62f278b58a6'); /* Replace with your image URL */
+          background-size: cover;
+          background-position: center;
+        }
+      </style>
+</head>
+
+<body class="bg-gray-300 p-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- Edit Form Section -->
+        <div class=" bg-opacity-20 bg-black   shadow-lg rounded-lg p-6 mb-8">
+            <h2 class="text-3xl font-semibold text-white mb-4">Edit Blog</h2>
+            <form action="/api/blog/<%= blog._id %>/edit" method="post">
+                <div class="grid grid-cols-1 gap-6">
+                    <!-- Title Field -->
+                    <div>
+                        <label for="title" class="block text-sm font-medium text-white text-2xl">Title</label>
+                        <input type="text" id="title" name="title" value="<%= blog.title %>" placeholder="Enter blog title" class="mt-2 p-3 w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <!-- Content Field -->
+                    <div>
+                        <label for="content" class="block text-sm font-medium text-white">Content</label>
+                        <textarea id="content" name="content" rows="5" placeholder="Enter blog content" class="mt-2 p-3 w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"><%= blog.content %></textarea>
+                    </div>
+                </div>
+                <!-- Submit Button -->
+                <div class="mt-6">
+                    <button type="submit" class="bg-indigo-600 text-white px-5 py-3 rounded-md font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Update Blog</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
